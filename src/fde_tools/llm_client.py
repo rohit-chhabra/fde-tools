@@ -25,8 +25,14 @@ def call_llm(provider: str, model: str, messages: list, **kwargs) -> str:
             api_key=os.getenv("GEMINI_API_KEY"),
             base_url="https://generativelanguage.googleapis.com/v1beta/openai/",
         )
+
+    elif provider.lower() == "ollama":
+        client = OpenAI(
+            api_key='ollama',
+            base_url="http://localhost:11434/v1",
+        )
     else:
-        raise ValueError(f"Unsupported provider: {provider}. Use 'openai' or 'gemini'.")
+        raise ValueError(f"Unsupported provider: {provider}. Use 'openai' or 'gemini' or 'ollama'.")
 
     response = client.chat.completions.create(
         model=model,

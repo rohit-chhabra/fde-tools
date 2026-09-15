@@ -12,3 +12,7 @@ print("\nGemini response:")
 response = call_llm(provider="gemini", model="gemini-3.6-flash", messages=messages)
 print(response)
 
+print("\nOllama gpt-oss response:")
+response = call_llm(provider="ollama", model="gpt-oss", messages=messages)
+print(response)
+
