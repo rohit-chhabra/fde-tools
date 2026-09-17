@@ -1,0 +1,21 @@
+try:
+    from .llm_client import call_llm
+except ImportError:
+    from llm_client import call_llm
+
+content = "Tell me an interesting fact."
+
+messages = [{"role": "user", "content": content}]
+
+print("OpenAI response:")
+response = call_llm(provider="openai", model="gpt-3.5-turbo", messages=messages)
+print(response)
+
+print("\nGemini response:")
+response = call_llm(provider="gemini", model="gemini-3.6-flash", messages=messages)
+print(response)
+
+print("\nOllama gpt-oss response:")
+response = call_llm(provider="ollama", model="gpt-oss", messages=messages)
+print(response)
+
