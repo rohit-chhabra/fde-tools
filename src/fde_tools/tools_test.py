@@ -23,7 +23,7 @@ DB = 'prices.db'
 with sqlite3.connect(DB) as conn:
     cursor = conn.cursor()
     cursor.execute('CREATE TABLE IF NOT EXISTS prices (city TEXT PRIMARY KEY, price REAL)')
-    conn.commit
+    conn.commit()
 
 def set_ticket_price(city, price):
     with sqlite3.connect(DB) as conn:
@@ -37,7 +37,7 @@ ticket_prices = [{"city": "london", "price": 400},
 {"city": "tokyo", "price": 800}]
 
 for item in ticket_prices:
-    set_ticket_price(item.city, item.price)
+    set_ticket_price(item['city'], item['price'])
 
 system_message = """
 You are a helpful assistant for an Airline called FlightAI.
